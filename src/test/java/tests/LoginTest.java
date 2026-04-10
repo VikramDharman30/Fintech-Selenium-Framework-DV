@@ -12,7 +12,7 @@ public class LoginTest extends BaseTest {
 
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.loginToApplication("Vikram", "Dharman");
+        loginPage.loginToApplication("john", "demo");
 
         boolean status = loginPage.isLoginSuccessful();
 
