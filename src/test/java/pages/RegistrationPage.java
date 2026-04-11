@@ -41,7 +41,7 @@ public class RegistrationPage {
         clickRegisterLink();
 
         driver.findElement(firstName).sendKeys("Vikram");
-        driver.findElement(lastName).sendKeys("Demo");
+        driver.findElement(lastName).sendKeys("Test");
         driver.findElement(address).sendKeys("Test Street");
         driver.findElement(city).sendKeys("Chennai");
         driver.findElement(state).sendKeys("TN");
