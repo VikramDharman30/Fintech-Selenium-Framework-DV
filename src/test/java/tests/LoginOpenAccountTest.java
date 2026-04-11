@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import base.BaseTest;
 import pages.AccountsPage;
 import pages.LoginPage;
+import utils.LoggerUtil;
 
 public class LoginOpenAccountTest extends BaseTest {
 
@@ -27,9 +28,7 @@ public class LoginOpenAccountTest extends BaseTest {
 
         boolean status =
                 accountsPage.isAccountCreated();
-
-        System.out.println(
-                "Account creation status: " + status);
+        LoggerUtil.logInfo( "Account creation status: " + status);
 
     }
 

@@ -9,22 +9,30 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 public class ScreenshotUtil {
-
     public static void captureScreenshot(
             WebDriver driver,
             String testName) {
 
-        TakesScreenshot ts =
-                (TakesScreenshot) driver;
+        if (driver == null) {
 
-        File source =
-                ts.getScreenshotAs(OutputType.FILE);
+            System.out.println(
+                    "Driver is NULL — Screenshot skipped");
 
-        File destination =
-                new File("screenshots/"
-                        + testName + ".png");
+            return;
+
+        }
 
         try {
+
+            TakesScreenshot ts =
+                    (TakesScreenshot) driver;
+
+            File source =
+                    ts.getScreenshotAs(OutputType.FILE);
+
+            File destination =
+                    new File("screenshots/"
+                            + testName + ".png");
 
             destination.getParentFile().mkdirs();
 
@@ -37,7 +45,7 @@ public class ScreenshotUtil {
                     "Screenshot saved: "
                             + destination.getAbsolutePath());
 
-        } catch (IOException e) {
+        } catch (Exception e) {
 
             System.out.println(
                     "Screenshot failed: "
@@ -45,6 +53,4 @@ public class ScreenshotUtil {
 
         }
 
-    }
-
-}
+    }}

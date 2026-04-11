@@ -6,12 +6,15 @@ import base.BaseTest;
 import pages.RegistrationPage;
 import pages.AccountsPage;
 import pages.TransferFundsPage;
+import utils.LoggerUtil;
 import utils.RetryAnalyzer;
 
 
 public class TransferFundsTest extends BaseTest {
 
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(
+            groups = {"regression"},
+            retryAnalyzer = RetryAnalyzer.class)
     public void transferFundsWorkflowTest() {
 
         RegistrationPage registrationPage =
@@ -49,7 +52,7 @@ public class TransferFundsTest extends BaseTest {
 
         transferPage.navigateToTransferFunds();
 
-        transferPage.enterAmount("Invalid");
+        transferPage.enterAmount("100");
 
         transferPage.selectFromAccount();
 
@@ -60,8 +63,7 @@ public class TransferFundsTest extends BaseTest {
         boolean status =
                 transferPage.isTransferSuccessful();
 
-        System.out.println(
-                "Transfer status: " + status);
+        LoggerUtil.logInfo("Transfer status: " + status);
 
     }
 

@@ -10,24 +10,23 @@ import org.testng.annotations.BeforeMethod;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.Listeners;
+import utils.LoggerUtil;
 import utils.TestListener;
 
-@Listeners(utils.TestListener.class)
 public class BaseTest {
 
     public static WebDriver driver;
 
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void setup() {
-
-        WebDriverManager.chromedriver().setup();
 
         driver = new ChromeDriver();
 
         driver.manage().window().maximize();
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
+        LoggerUtil.logInfo("Browser launched");
         driver.get(ConfigReader.getProperty("baseUrl"));
     }
 
@@ -36,6 +35,7 @@ public class BaseTest {
 
         if (driver != null) {
             driver.quit();
+            driver = null;
         }
     }
 }

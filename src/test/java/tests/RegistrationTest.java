@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 
 import base.BaseTest;
 import pages.RegistrationPage;
+import utils.LoggerUtil;
 
 public class RegistrationTest extends BaseTest {
 
@@ -13,7 +14,7 @@ public class RegistrationTest extends BaseTest {
         RegistrationPage registrationPage =
                 new RegistrationPage(driver);
 
-        String username = "vikramTest";
+        String username = "Vik" + System.currentTimeMillis();
 
         registrationPage.registerUser(
                 username,
@@ -23,8 +24,7 @@ public class RegistrationTest extends BaseTest {
         boolean status =
                 registrationPage.isRegistrationSuccessful();
 
-        System.out.println("Registration status: " + status);
-
+        LoggerUtil.logInfo("Registration status: " + status);
     }
 
 

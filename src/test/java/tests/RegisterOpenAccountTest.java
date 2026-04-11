@@ -5,12 +5,17 @@ import org.testng.annotations.Test;
 import base.BaseTest;
 import pages.RegistrationPage;
 import pages.AccountsPage;
+import utils.LoggerUtil;
+import utils.RetryAnalyzer;
 
 public class RegisterOpenAccountTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke", "regression"},
+            retryAnalyzer = RetryAnalyzer.class)
     public void fullBankWorkflowTest() {
-
+        if (driver == null) {
+            throw new RuntimeException("Driver not initialized");
+        }
         RegistrationPage registrationPage =
                 new RegistrationPage(driver);
 
@@ -41,7 +46,7 @@ public class RegisterOpenAccountTest extends BaseTest {
         boolean status =
                 accountsPage.isAccountCreated();
 
-        System.out.println(
+        LoggerUtil.logInfo(
                 "Account creation status: " + status);
 
     }
