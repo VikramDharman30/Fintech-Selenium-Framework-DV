@@ -2,6 +2,7 @@ package base;
 
 import java.time.Duration;
 
+import config.ConfigReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -27,7 +28,7 @@ public class BaseTest {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        driver.get("https://parabank.parasoft.com");
+        driver.get(ConfigReader.getProperty("baseUrl"));
     }
 
     @AfterMethod

@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Banking Automation Suite">
+
+    <test name="Parabank Tests">
+
+        <classes>
+
+            <class name="tests.RegisterOpenAccountTest"/>
+
+            <class name="tests.TransferFundsTest"/>
+
+        </classes>
+
+    </test>
+
+</suite>

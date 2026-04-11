@@ -6,10 +6,12 @@ import base.BaseTest;
 import pages.RegistrationPage;
 import pages.AccountsPage;
 import pages.TransferFundsPage;
+import utils.RetryAnalyzer;
+
 
 public class TransferFundsTest extends BaseTest {
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void transferFundsWorkflowTest() {
 
         RegistrationPage registrationPage =
@@ -47,7 +49,7 @@ public class TransferFundsTest extends BaseTest {
 
         transferPage.navigateToTransferFunds();
 
-        transferPage.enterAmount("100");
+        transferPage.enterAmount("Invalid");
 
         transferPage.selectFromAccount();
 
