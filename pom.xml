@@ -32,6 +32,13 @@
             <version>5.8.0</version>
         </dependency>
 
+        <!-- Extentreports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>5.1.1</version>
+        </dependency>
+
         <!--To clear selenium logger warning -->
         <dependency>
             <groupId>org.slf4j</groupId>

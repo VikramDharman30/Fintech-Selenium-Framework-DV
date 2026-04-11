@@ -4,9 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 
 public class LoginPage {
 
@@ -21,30 +20,60 @@ public class LoginPage {
     By usernameField = By.name("username");
     By passwordField = By.name("password");
     By loginButton = By.xpath("//input[@value='Log In']");
+    By errorMessage = By.xpath("//p[@class='error']");
+    By logoutLink = By.linkText("Log Out");
 
-    // Actions / Methods
+    // Actions
 
-    public void enterUsername(String username) {
+    public void login(String username, String password) {
+
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(usernameField)
+        );
+
+        driver.findElement(usernameField).clear();
         driver.findElement(usernameField).sendKeys(username);
-    }
 
-    public void enterPassword(String password) {
+        driver.findElement(passwordField).clear();
         driver.findElement(passwordField).sendKeys(password);
-    }
 
-    public void clickLogin() {
         driver.findElement(loginButton).click();
+
     }
 
-    public void loginToApplication(String username, String password) {
-        enterUsername(username);
-        enterPassword(password);
-        clickLogin();
-    }
+    // Validation
 
     public boolean isLoginSuccessful() {
 
-        return driver.getCurrentUrl().contains("overview");
+        try {
+
+            WebDriverWait wait =
+                    new WebDriverWait(driver, Duration.ofSeconds(10));
+
+            wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(logoutLink)
+            );
+
+            return true;
+
+        } catch (Exception e) {
+
+            return false;
+
+        }
+
+    }
+
+    public boolean isLoginErrorDisplayed() {
+
+        try {
+            return driver.findElement(errorMessage).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
 
     }
 

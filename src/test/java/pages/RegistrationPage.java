@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -58,6 +59,12 @@ public class RegistrationPage {
         driver.findElement(confirmPassword).sendKeys(pwd);
 
         driver.findElement(registerButton).click();
+        Assert.assertTrue(
+                driver.findElement(
+                                By.linkText("Log Out"))
+                        .isDisplayed(),
+                "Registration failed"
+        );
 
     }
 

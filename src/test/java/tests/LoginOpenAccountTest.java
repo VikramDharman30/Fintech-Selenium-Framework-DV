@@ -15,7 +15,7 @@ public class LoginOpenAccountTest extends BaseTest {
         LoginPage loginPage =
                 new LoginPage(driver);
 
-        loginPage.loginToApplication("john", "demo");
+        loginPage.login("john", "demo");
 
         AccountsPage accountsPage =
                 new AccountsPage(driver);
