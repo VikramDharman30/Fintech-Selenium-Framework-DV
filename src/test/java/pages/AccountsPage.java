@@ -19,7 +19,7 @@ public class AccountsPage {
     // Locators
 
     By openNewAccountLink = By.linkText("Open New Account");
-
+    By fromAccountDropdown = By.id("fromAccountId");
     By accountTypeDropdown = By.id("type");
 
     By openAccountButton =
@@ -39,8 +39,20 @@ public class AccountsPage {
 
         Select select =
                 new Select(driver.findElement(accountTypeDropdown));
-
         select.selectByVisibleText("SAVINGS");
+
+        // Wait until From Account dropdown gets populated
+
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(20));
+
+        wait.until(driver -> {
+
+            Select fromAccountSelect =
+                    new Select(driver.findElement(fromAccountDropdown));
+            return !fromAccountSelect.getOptions().isEmpty();
+
+        });
 
     }
 
