@@ -8,10 +8,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.annotations.Listeners;
+import utils.TestListener;
 
+@Listeners(utils.TestListener.class)
 public class BaseTest {
 
-    protected WebDriver driver;
+    public static WebDriver driver;
 
     @BeforeMethod
     public void setup() {

@@ -47,12 +47,9 @@ public class AccountsPage {
                 new WebDriverWait(driver, Duration.ofSeconds(20));
 
         wait.until(driver -> {
-
             Select fromAccountSelect =
                     new Select(driver.findElement(fromAccountDropdown));
-            return !fromAccountSelect.getOptions().isEmpty();
-
-        });
+            return !fromAccountSelect.getOptions().isEmpty();});
 
     }
 
