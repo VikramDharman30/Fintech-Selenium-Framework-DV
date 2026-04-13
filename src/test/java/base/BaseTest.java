@@ -5,6 +5,8 @@ import java.time.Duration;
 import config.ConfigReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -12,31 +14,54 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.Listeners;
 import utils.LoggerUtil;
 import utils.TestListener;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class BaseTest {
 
-    public static WebDriver driver;
+    private static ThreadLocal<WebDriver> driver =
+            new ThreadLocal<>();
+
+    public static WebDriver getDriver() {
+        return driver.get();
+    }
+
+    protected static Logger log =
+            LogManager.getLogger(BaseTest.class);
 
     @BeforeMethod (alwaysRun = true)
     public void setup() {
 
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        String browser =
+                ConfigReader.getProperty("browser");
 
-        driver.manage().window().maximize();
+        if (browser.equalsIgnoreCase("chrome")) {
+            WebDriverManager.chromedriver().setup();
+            WebDriver wd = new ChromeDriver();
+            driver.set(wd);
+        }
+        else if (browser.equalsIgnoreCase("edge")) {
+            driver.set(new EdgeDriver());
+        }
+        else if (browser.equalsIgnoreCase("firefox")) {
+            driver.set(new FirefoxDriver());
+        }
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
+        log.info("Thread ID : " + Thread.currentThread().getId());
+        getDriver().manage().window().maximize();
+        log.info("Launching Browser");
+        getDriver().get(ConfigReader.getProperty("baseUrl"));
+        log.info("Navigated to URL: " + ConfigReader.getProperty("baseUrl"));
         LoggerUtil.logInfo("Browser launched");
-        driver.get(ConfigReader.getProperty("baseUrl"));
+
     }
 
     @AfterMethod
     public void tearDown() {
 
-        if (driver != null) {
-            driver.quit();
-            driver = null;
-        }
+            getDriver().quit();
+            driver.remove();
+            log.info("Browser Closed");
+
     }
 }

@@ -13,15 +13,21 @@ public class LoginTest extends BaseTest {
     public void validLoginTest() {
 
        LoginPage loginPage =
-                new LoginPage(driver);
+                new LoginPage(BaseTest.getDriver());
 
         String username = "john";
         String password = "demo";
 
+        log.info("Starting login test");
+
         loginPage.login(username, password);
+
+        log.info("Login attempted");
 
         boolean status =
                 loginPage.isLoginSuccessful();
+        Assert.assertTrue(status);
+        log.info("Login successful");
 
         Assert.assertTrue(
                 status,
@@ -34,7 +40,7 @@ public class LoginTest extends BaseTest {
     public void invalidLoginTest() {
 
         LoginPage loginPage =
-                new LoginPage(driver);
+                new LoginPage(BaseTest.getDriver());
 
         loginPage.login(
                 "invalidUser",

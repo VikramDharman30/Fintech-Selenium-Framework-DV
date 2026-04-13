@@ -1,0 +1,68 @@
+2026-04-13 11:14:31 [main] INFO  base.BaseTest - Launching Browser
+2026-04-13 11:14:34 [main] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 11:14:34 [main] INFO  base.BaseTest - Starting login test
+2026-04-13 11:14:35 [main] INFO  base.BaseTest - Login attempted
+2026-04-13 11:14:35 [main] INFO  base.BaseTest - Login successful
+2026-04-13 11:14:37 [main] INFO  base.BaseTest - Launching Browser
+2026-04-13 11:14:40 [main] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 11:57:45 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Thread ID : 20
+2026-04-13 11:57:45 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Launching Browser
+2026-04-13 11:57:49 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 11:57:49 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Starting login test
+2026-04-13 11:57:52 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Login attempted
+2026-04-13 11:57:52 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Login successful
+2026-04-13 11:58:30 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Thread ID : 20
+2026-04-13 11:58:30 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Launching Browser
+2026-04-13 11:58:33 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 11:58:33 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Starting login test
+2026-04-13 11:58:35 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Login attempted
+2026-04-13 11:58:35 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Login successful
+2026-04-13 12:02:37 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Thread ID : 23
+2026-04-13 12:02:37 [TestNG-test-Smoke Tests-2] INFO  base.BaseTest - Thread ID : 24
+2026-04-13 12:02:37 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Thread ID : 25
+2026-04-13 12:02:37 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Launching Browser
+2026-04-13 12:02:37 [TestNG-test-Smoke Tests-2] INFO  base.BaseTest - Launching Browser
+2026-04-13 12:02:37 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Launching Browser
+2026-04-13 12:02:38 [TestNG-test-Smoke Tests-2] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 12:02:38 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 12:02:39 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 12:02:46 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Thread ID : 25
+2026-04-13 12:02:46 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Launching Browser
+2026-04-13 12:02:47 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 12:02:47 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Starting login test
+2026-04-13 12:02:48 [TestNG-test-Smoke Tests-2] INFO  base.BaseTest - Thread ID : 24
+2026-04-13 12:02:48 [TestNG-test-Smoke Tests-2] INFO  base.BaseTest - Launching Browser
+2026-04-13 12:02:49 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Login attempted
+2026-04-13 12:02:49 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Login successful
+2026-04-13 12:02:50 [TestNG-test-Smoke Tests-2] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 12:02:57 [TestNG-test-Smoke Tests-2] INFO  base.BaseTest - Thread ID : 24
+2026-04-13 12:02:57 [TestNG-test-Smoke Tests-2] INFO  base.BaseTest - Launching Browser
+2026-04-13 12:03:07 [TestNG-test-Smoke Tests-2] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 12:07:39 [main] INFO  base.BaseTest - Thread ID : 1
+2026-04-13 12:07:39 [main] INFO  base.BaseTest - Launching Browser
+2026-04-13 12:07:43 [main] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 12:07:49 [main] INFO  base.BaseTest - Browser Closed
+2026-04-13 12:07:50 [main] INFO  base.BaseTest - Thread ID : 1
+2026-04-13 12:07:50 [main] INFO  base.BaseTest - Launching Browser
+2026-04-13 12:07:53 [main] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 12:08:01 [main] INFO  base.BaseTest - Browser Closed
+2026-04-13 12:08:02 [main] INFO  base.BaseTest - Thread ID : 1
+2026-04-13 12:08:02 [main] INFO  base.BaseTest - Launching Browser
+2026-04-13 12:08:04 [main] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 12:08:10 [main] INFO  base.BaseTest - Browser Closed
+2026-04-13 12:16:06 [main] INFO  base.BaseTest - Thread ID : 1
+2026-04-13 12:16:06 [main] INFO  base.BaseTest - Launching Browser
+2026-04-13 12:16:10 [main] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 12:16:20 [main] INFO  base.BaseTest - Browser Closed
+2026-04-13 12:17:15 [TestNG-test-Smoke Tests-2] INFO  base.BaseTest - Thread ID : 23
+2026-04-13 12:17:15 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Thread ID : 24
+2026-04-13 12:17:15 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Thread ID : 22
+2026-04-13 12:17:15 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Launching Browser
+2026-04-13 12:17:15 [TestNG-test-Smoke Tests-2] INFO  base.BaseTest - Launching Browser
+2026-04-13 12:17:15 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Launching Browser
+2026-04-13 12:17:18 [TestNG-test-Smoke Tests-1] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 12:17:18 [TestNG-test-Smoke Tests-2] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 12:17:19 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Navigated to URL: https://parabank.parasoft.com/parabank/index.htm
+2026-04-13 12:17:19 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Starting login test
+2026-04-13 12:17:23 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Login attempted
+2026-04-13 12:17:23 [TestNG-test-Smoke Tests-3] INFO  base.BaseTest - Login successful

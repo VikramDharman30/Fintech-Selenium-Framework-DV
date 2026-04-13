@@ -1,5 +1,6 @@
 package pages;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +14,7 @@ public class AccountsPage {
     WebDriver driver;
 
     public AccountsPage(WebDriver driver) {
-        this.driver = driver;
+        this.driver = BaseTest.getDriver();
     }
 
     // Locators

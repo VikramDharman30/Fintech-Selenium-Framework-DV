@@ -1,5 +1,6 @@
 package pages;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -13,7 +14,7 @@ public class TransferFundsPage {
     WebDriver driver;
 
     public TransferFundsPage(WebDriver driver) {
-        this.driver = driver;
+        this.driver = BaseTest.getDriver();
     }
 
     // Locators
@@ -62,6 +63,13 @@ public class TransferFundsPage {
 
     public void selectFromAccount() {
 
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(driver -> {
+            Select fromAccountSelect =
+                    new Select(driver.findElement(fromAccountDropdown));
+            return !fromAccountSelect.getOptions().isEmpty();});
+
         Select select =
                 new Select(driver.findElement(fromAccountDropdown));
 
@@ -73,9 +81,12 @@ public class TransferFundsPage {
 
         WebDriverWait wait =
                 new WebDriverWait(driver, Duration.ofSeconds(15));
-
         wait.until(ExpectedConditions
                 .presenceOfElementLocated(toAccountDropdown));
+        wait.until(driver -> {
+            Select fromAccountSelect =
+                    new Select(driver.findElement(toAccountDropdown));
+            return !fromAccountSelect.getOptions().isEmpty();});
 
         Select select =
                 new Select(driver.findElement(toAccountDropdown));

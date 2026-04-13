@@ -16,13 +16,12 @@ public class RegisterOpenAccountTest extends BaseTest {
     @Test(groups = {"smoke", "regression"},
             retryAnalyzer = RetryAnalyzer.class)
     public void fullBankWorkflowTest() {
-        if (driver == null) {
+        if (getDriver() == null) {
             throw new RuntimeException("Driver not initialized");
         }
-        Assert.assertTrue(false);
 
         RegistrationPage registrationPage =
-                new RegistrationPage(driver);
+                new RegistrationPage(getDriver());
 
         String username =
                 "user" + System.currentTimeMillis();
@@ -40,7 +39,7 @@ public class RegisterOpenAccountTest extends BaseTest {
 
         // Open New Account
         AccountsPage accountsPage =
-                new AccountsPage(driver);
+                new AccountsPage(getDriver());
 
         accountsPage.clickOpenNewAccount();
 

@@ -1,5 +1,6 @@
 package pages;
 
+import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,7 +14,7 @@ public class LoginPage {
 
     // Constructor
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        this.driver = BaseTest.getDriver();
     }
 
     // Locators

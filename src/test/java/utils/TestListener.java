@@ -23,9 +23,7 @@ public class TestListener implements ITestListener {
         ExtentTest test =
                 ExtentManager
                         .getExtent()
-                        .createTest(
-                                result.getName()
-                        );
+                        .createTest(result.getTestClass().getName() + " - " + result.getMethod().getMethodName());
 
         ExtentManager.setTest(test);
 
@@ -34,7 +32,7 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
 
-        WebDriver driver = BaseTest.driver;
+        WebDriver driver = BaseTest.getDriver();
 
         try {
 
@@ -61,10 +59,42 @@ public class TestListener implements ITestListener {
         }
 
     }
+
+    @Override
+    public void onTestSkipped(ITestResult result) {
+
+        WebDriver driver = BaseTest.getDriver();
+
+        try {
+
+            String base64Screenshot =
+                    ScreenshotUtil
+                            .captureScreenshotBase64(driver);
+
+            ExtentManager
+                    .getTest()
+                    .skip(
+                            result.getThrowable(),
+                            MediaEntityBuilder
+                                    .createScreenCaptureFromBase64String(
+                                            base64Screenshot,
+                                            result.getName()
+                                    )
+                                    .build()
+                    );
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
     @Override
     public void onTestFailure(ITestResult result) {
 
-        WebDriver driver = BaseTest.driver;
+        WebDriver driver = BaseTest.getDriver();
 
         try {
 
@@ -82,13 +112,9 @@ public class TestListener implements ITestListener {
                                     )
                                     .build()
                     );
-
         } catch (Exception e) {
-
             e.printStackTrace();
-
         }
-
     }
 
     @Override

@@ -9,16 +9,16 @@ import utils.LoggerUtil;
 
 public class LoginOpenAccountTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke"})
     public void openNewAccountTest() {
 
         LoginPage loginPage =
-                new LoginPage(driver);
+                new LoginPage(getDriver());
 
         loginPage.login("john", "demo");
 
         AccountsPage accountsPage =
-                new AccountsPage(driver);
+                new AccountsPage(getDriver());
 
         accountsPage.clickOpenNewAccount();
 

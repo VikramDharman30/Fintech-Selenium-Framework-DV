@@ -13,12 +13,12 @@ import utils.RetryAnalyzer;
 public class TransferFundsTest extends BaseTest {
 
     @Test(
-            groups = {"regression"},
+            groups = {"smoke"},
             retryAnalyzer = RetryAnalyzer.class)
     public void transferFundsWorkflowTest() {
 
         RegistrationPage registrationPage =
-                new RegistrationPage(driver);
+                new RegistrationPage(getDriver());
 
         String username =
                 "user" + System.currentTimeMillis();
@@ -33,7 +33,7 @@ public class TransferFundsTest extends BaseTest {
         );
 
         AccountsPage accountsPage =
-                new AccountsPage(driver);
+                new AccountsPage(getDriver());
 
         // Create new account
 
@@ -46,7 +46,7 @@ public class TransferFundsTest extends BaseTest {
         accountsPage.isAccountCreated();
 
         TransferFundsPage transferPage =
-                new TransferFundsPage(driver);
+                new TransferFundsPage(getDriver());
 
         // Transfer funds
 

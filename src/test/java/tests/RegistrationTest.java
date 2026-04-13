@@ -12,7 +12,7 @@ public class RegistrationTest extends BaseTest {
     public void userRegistrationTest() {
 
         RegistrationPage registrationPage =
-                new RegistrationPage(driver);
+                new RegistrationPage(getDriver());
 
         String username = "Vik" + System.currentTimeMillis();
 

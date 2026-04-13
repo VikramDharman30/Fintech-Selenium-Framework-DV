@@ -1,5 +1,6 @@
 package utils;
 
+import base.BaseTest;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -36,7 +37,7 @@ public class ScreenshotUtil {
         try {
 
             File src =
-                    ((TakesScreenshot) driver)
+                    ((TakesScreenshot) BaseTest.getDriver())
                             .getScreenshotAs(OutputType.FILE);
 
             File dest =
