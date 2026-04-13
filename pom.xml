@@ -8,6 +8,7 @@
     <artifactId>POMSeleniumProject</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
     <dependencies>
 
         <!-- Selenium -->

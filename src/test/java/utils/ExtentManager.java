@@ -1,44 +1,51 @@
 package utils;
 
 import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class ExtentManager {
 
     private static ExtentReports extent;
+    private static ThreadLocal<ExtentTest> test =
+            new ThreadLocal<>();
 
-    public static ExtentReports getInstance() {
+    public static ExtentReports getExtent() {
 
         if (extent == null) {
 
-            ExtentSparkReporter sparkReporter =
-                    new ExtentSparkReporter(
-                            "test-output/ExtentReport.html"
-                    );
+            String reportPath =
+                    System.getProperty("user.dir")
+                            + "/reports/ExtentReport.html";
 
-            sparkReporter.config()
-                    .setReportName("Parabank Automation Report");
+            ExtentSparkReporter spark =
+                    new ExtentSparkReporter(reportPath);
 
-            sparkReporter.config()
-                    .setDocumentTitle("Test Execution Report");
+            spark.config().setReportName(
+                    "FinTech Automation Report"
+            );
+
+            spark.config().setDocumentTitle(
+                    "Test Results"
+            );
 
             extent = new ExtentReports();
-
-            extent.attachReporter(sparkReporter);
-
-            extent.setSystemInfo(
-                    "Project",
-                    "Parabank Automation Framework"
-            );
-
-            extent.setSystemInfo(
-                    "Tester",
-                    "Maha Devar"
-            );
+            extent.attachReporter(spark);
 
         }
 
         return extent;
+    }
+
+    public static void setTest(ExtentTest extentTest) {
+
+        test.set(extentTest);
+
+    }
+
+    public static ExtentTest getTest() {
+
+        return test.get();
 
     }
 

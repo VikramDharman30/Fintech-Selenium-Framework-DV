@@ -1,5 +1,7 @@
 package tests;
 
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
@@ -8,6 +10,7 @@ import pages.AccountsPage;
 import utils.LoggerUtil;
 import utils.RetryAnalyzer;
 
+@Listeners(utils.TestListener.class)
 public class RegisterOpenAccountTest extends BaseTest {
 
     @Test(groups = {"smoke", "regression"},
@@ -16,6 +19,8 @@ public class RegisterOpenAccountTest extends BaseTest {
         if (driver == null) {
             throw new RuntimeException("Driver not initialized");
         }
+        Assert.assertTrue(false);
+
         RegistrationPage registrationPage =
                 new RegistrationPage(driver);
 

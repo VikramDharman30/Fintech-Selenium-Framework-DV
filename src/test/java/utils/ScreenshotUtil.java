@@ -7,50 +7,61 @@ import org.openqa.selenium.WebDriver;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+
+import org.apache.commons.io.FileUtils;
 
 public class ScreenshotUtil {
-    public static void captureScreenshot(
+    public static String captureScreenshot(
             WebDriver driver,
             String testName) {
 
-        if (driver == null) {
+        String screenshotDir =
+                System.getProperty("user.dir")
+                        + "/screenshots/";
 
-            System.out.println(
-                    "Driver is NULL — Screenshot skipped");
+        File dir = new File(screenshotDir);
 
-            return;
-
+        if (!dir.exists()) {
+            dir.mkdirs();
         }
+
+        String screenshotPath =
+                screenshotDir
+                        + testName
+                        + "_"
+                        + System.currentTimeMillis()
+                        + ".png";
 
         try {
 
-            TakesScreenshot ts =
-                    (TakesScreenshot) driver;
+            File src =
+                    ((TakesScreenshot) driver)
+                            .getScreenshotAs(OutputType.FILE);
 
-            File source =
-                    ts.getScreenshotAs(OutputType.FILE);
-
-            File destination =
-                    new File("screenshots/"
-                            + testName + ".png");
-
-            destination.getParentFile().mkdirs();
+            File dest =
+                    new File(screenshotPath);
 
             Files.copy(
-                    source.toPath(),
-                    destination.toPath()
+                    src.toPath(),
+                    dest.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING
             );
 
-            System.out.println(
-                    "Screenshot saved: "
-                            + destination.getAbsolutePath());
+        } catch (IOException e) {
 
-        } catch (Exception e) {
-
-            System.out.println(
-                    "Screenshot failed: "
-                            + e.getMessage());
+            e.printStackTrace();
 
         }
 
-    }}
+        return screenshotPath;
+    }
+    public static String captureScreenshotBase64(WebDriver driver) {
+
+        String base64Screenshot =
+                ((TakesScreenshot) driver)
+                        .getScreenshotAs(OutputType.BASE64);
+
+        return base64Screenshot;
+    }
+}

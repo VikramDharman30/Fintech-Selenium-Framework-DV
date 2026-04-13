@@ -15,7 +15,6 @@
         </groups>
 
         <classes>
-            <class name="tests.LoginTest"/>
             <class name="tests.RegisterOpenAccountTest"/>
         </classes>
 
@@ -32,7 +31,6 @@
 
         <classes>
 
-            <class name="tests.RegisterOpenAccountTest"/>
             <class name="tests.TransferFundsTest"/>
 
         </classes>

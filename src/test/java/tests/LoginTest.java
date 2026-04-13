@@ -12,7 +12,7 @@ public class LoginTest extends BaseTest {
     @Test(groups = {"smoke", "regression"})
     public void validLoginTest() {
 
-        LoginPage loginPage =
+       LoginPage loginPage =
                 new LoginPage(driver);
 
         String username = "john";

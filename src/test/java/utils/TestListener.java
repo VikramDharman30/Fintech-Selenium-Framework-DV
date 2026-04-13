@@ -1,60 +1,102 @@
 package utils;
 
 import base.BaseTest;
-
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-
 public class TestListener implements ITestListener {
 
-    ExtentReports extent =
-            ExtentManager.getInstance();
+    @Override
+    public void onStart(ITestContext context) {
 
-    ExtentTest test;
+        ExtentManager.getExtent();
+
+    }
 
     @Override
     public void onTestStart(ITestResult result) {
 
-        test = extent.createTest(
-                result.getName()
-        );
+        ExtentTest test =
+                ExtentManager
+                        .getExtent()
+                        .createTest(
+                                result.getName()
+                        );
+
+        ExtentManager.setTest(test);
 
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
 
-        test.pass("Test Passed");
+        WebDriver driver = BaseTest.driver;
+
+        try {
+
+            String base64Screenshot =
+                    ScreenshotUtil
+                            .captureScreenshotBase64(driver);
+
+            ExtentManager
+                    .getTest()
+                    .pass(
+                            "Test Passed",
+                            MediaEntityBuilder
+                                    .createScreenCaptureFromBase64String(
+                                            base64Screenshot,
+                                            result.getName()
+                                    )
+                                    .build()
+                    );
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
 
     }
-
     @Override
     public void onTestFailure(ITestResult result) {
 
-        test.fail(result.getThrowable());
+        WebDriver driver = BaseTest.driver;
 
-        WebDriver driver =
-                BaseTest.driver;
+        try {
 
-        String testName =
-                result.getName();
+            String base64Screenshot =
+                    ScreenshotUtil
+                            .captureScreenshotBase64(driver);
 
-        ScreenshotUtil.captureScreenshot(
-                driver,
-                testName
-        );
+            ExtentManager
+                    .getTest()
+                    .fail(
+                            result.getThrowable(),
+                            MediaEntityBuilder
+                                    .createScreenCaptureFromBase64String(
+                                            base64Screenshot
+                                    )
+                                    .build()
+                    );
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
 
     }
 
     @Override
-    public void onFinish(
-            org.testng.ITestContext context) {
+    public void onFinish(ITestContext context) {
 
-        extent.flush();
+        ExtentManager
+                .getExtent()
+                .flush();
 
     }
 
