@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.waitUtils;
 
 import java.time.Duration;
 
@@ -16,6 +17,7 @@ public class LoginPage {
     public LoginPage(WebDriver driver) {
         this.driver = BaseTest.getDriver();
     }
+    waitUtils WaitUtils = new waitUtils();
 
     // Locators
     By usernameField = By.name("username");
@@ -27,13 +29,7 @@ public class LoginPage {
     // Actions
 
     public void login(String username, String password) {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(usernameField)
-        );
+        WaitUtils.waitForElementVisible(usernameField);
 
         driver.findElement(usernameField).clear();
         driver.findElement(usernameField).sendKeys(username);
@@ -50,13 +46,7 @@ public class LoginPage {
     public boolean isLoginSuccessful() {
 
         try {
-
-            WebDriverWait wait =
-                    new WebDriverWait(driver, Duration.ofSeconds(10));
-
-            wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(logoutLink)
-            );
+            WaitUtils.waitForElementVisible(logoutLink);
 
             return true;
 
