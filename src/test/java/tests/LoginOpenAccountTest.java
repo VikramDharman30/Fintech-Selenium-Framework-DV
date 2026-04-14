@@ -9,7 +9,7 @@ import utils.LoggerUtil;
 
 public class LoginOpenAccountTest extends BaseTest {
 
-    @Test(groups = {"smoke"})
+    @Test(groups = {"regression"})
     public void openNewAccountTest() {
 
         LoginPage loginPage =

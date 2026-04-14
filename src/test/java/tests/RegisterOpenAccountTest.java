@@ -13,7 +13,7 @@ import utils.RetryAnalyzer;
 @Listeners(utils.TestListener.class)
 public class RegisterOpenAccountTest extends BaseTest {
 
-    @Test(groups = {"smoke", "regression"},
+    @Test(groups = {"smoke"},
             retryAnalyzer = RetryAnalyzer.class)
     public void fullBankWorkflowTest() {
         if (getDriver() == null) {

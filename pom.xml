@@ -1,14 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.automation</groupId>
+    <groupId>com.fintech</groupId>
     <artifactId>POMSeleniumProject</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- Default Property -->
+        <properties>
 
+            <maven.compiler.source>17</maven.compiler.source>
+            <maven.compiler.target>17</maven.compiler.target>
+
+            <!-- Default Environment -->
+            <env>stage</env>
+
+            <!-- Default Suite File (IMPORTANT FIX) -->
+            <suiteXmlFile>testng-regression.xml</suiteXmlFile>
+
+        </properties>
+
+    <!-- Dependencies -->
     <dependencies>
 
         <!-- Selenium -->
@@ -33,20 +48,14 @@
             <version>5.8.0</version>
         </dependency>
 
-        <!-- Extentreports -->
+        <!-- Extent Reports -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>5.1.1</version>
         </dependency>
 
-        <!--To clear selenium logger warning -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>2.0.12</version>
-        </dependency>
-
+        <!-- Logging -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
@@ -59,25 +68,98 @@
             <version>2.23.1</version>
         </dependency>
 
-    </dependencies>
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+        <!-- Selenium logger fix -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.12</version>
+        </dependency>
 
+    </dependencies>
+
+    <!-- Build -->
     <build>
+
         <plugins>
+
+            <!-- Surefire Plugin -->
             <plugin>
+
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+
+                    <!-- Suite file from profile -->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+
+                    <!-- Pass env variable -->
+                    <systemPropertyVariables>
+                        <env>${env}</env>
+                    </systemPropertyVariables>
+
+                    <!-- Parallel Execution -->
+                    <parallel>classes</parallel>
+                    <threadCount>3</threadCount>
+
                 </configuration>
+
             </plugin>
+
         </plugins>
+
     </build>
+
+    <!-- Profiles -->
+    <profiles>
+
+        <!-- Smoke Tests -->
+        <profile>
+
+            <id>smoke</id>
+
+            <properties>
+                <suiteXmlFile>testng-smoke.xml</suiteXmlFile>
+            </properties>
+
+        </profile>
+
+        <!-- Regression Tests -->
+        <profile>
+
+            <id>regression</id>
+
+            <properties>
+                <suiteXmlFile>testng.xml</suiteXmlFile>
+            </properties>
+
+        </profile>
+
+        <!-- Stage Environment -->
+        <profile>
+
+            <id>stage</id>
+
+            <properties>
+                <env>stage</env>
+            </properties>
+
+        </profile>
+
+        <!-- Production Environment -->
+        <profile>
+
+            <id>prod</id>
+
+            <properties>
+                <env>prod</env>
+            </properties>
+
+        </profile>
+
+    </profiles>
 
 </project>

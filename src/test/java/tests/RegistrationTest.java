@@ -8,7 +8,8 @@ import utils.LoggerUtil;
 
 public class RegistrationTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"regression"})
+
     public void userRegistrationTest() {
 
         RegistrationPage registrationPage =

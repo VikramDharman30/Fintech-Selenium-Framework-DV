@@ -17,9 +17,24 @@
             </run>
         </groups>
         <classes>
+            <class name="tests.RegisterOpenAccountTest"/>
+            <class name="tests.LoginTest"/>
+
+        </classes>
+    </test>
+
+    <test name="Regression Tests">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
             <class name="tests.LoginOpenAccountTest"/>
             <class name="tests.TransferFundsTest"/>
+            <class name="tests.RegistrationTest"/>
             <class name="tests.LoginTest"/>
         </classes>
     </test>
+
 </suite>

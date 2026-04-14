@@ -13,7 +13,7 @@ import utils.RetryAnalyzer;
 public class TransferFundsTest extends BaseTest {
 
     @Test(
-            groups = {"smoke"},
+            groups = {"regression"},
             retryAnalyzer = RetryAnalyzer.class)
     public void transferFundsWorkflowTest() {
 

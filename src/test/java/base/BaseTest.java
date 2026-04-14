@@ -2,23 +2,20 @@ package base;
 
 import java.time.Duration;
 
-import config.ConfigReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.testng.annotations.Listeners;
 import utils.LoggerUtil;
-import utils.TestListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import config.configReader;
 
 public class BaseTest {
-
+    configReader ConfigReader = new configReader();
     private static ThreadLocal<WebDriver> driver =
             new ThreadLocal<>();
 
